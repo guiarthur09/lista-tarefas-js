@@ -1,75 +1,71 @@
-const listaTrf = [];
+const listaTrf = [];  //Aqui esta criando o array
 
 const frm = document.querySelector("#frm");
 const resp = document.querySelector("#resp");
-const btn = document.querySelector("#btn");
+const btn = document.querySelector("#btn");  //Aqui sao as seleçoes dos elementos 
 const btn3 = document.querySelector("#btn3");
 const input = document.querySelector("#inTrf");
 
-// Adicionar tarefa
-frm.addEventListener("submit", (e) => {
-    e.preventDefault();
 
-    const trf = input.value.trim();
+frm.addEventListener("submit", (e) => { // Adicionar tarefa
+    e.preventDefault(); //evita que a pag. carregue ao enviar o form.
 
-    // evita adicionar tarefa vazia
-    if (!trf) return;
+    const trf = input.value.trim(); //trim - metdo de tira os espaços em brancos.
 
-    listaTrf.push(trf);
+  
+    if (!trf) return; // evita adicionar tarefa vazia
 
-    input.value = "";
+    listaTrf.push(trf); //adc a tarefa dentro do array
+
+    input.value = ""; //limpa o campo para a próx tarefa
 });
 
-// Listar tarefas
-btn.addEventListener("click", () => {
 
-    resp.innerHTML = "";
+btn.addEventListener("click", () => { // Listar tarefa
 
-    listaTrf.forEach((tarefa) => {
-        const li = document.createElement("li");
-        li.innerText = tarefa;
+    resp.innerHTML = ""; //isso vai limpar a tela pra evitar duplicaçao
 
-        li.addEventListener("click", () => {
+    listaTrf.forEach((tarefa) => { // percorre dentro do array
+        const li = document.createElement("li"); //cria uma lista 
+        li.innerText = tarefa; //coloca dentro do <li>
 
-            const itens = resp.querySelectorAll("li");
+        li.addEventListener("click", () => { //ao clicar em cada tarefa
+
+            const itens = resp.querySelectorAll("li"); //pega todos o itens da lista
 
             itens.forEach((item) => {
-                item.classList.remove("selecionado");
+                item.classList.remove("selecionado"); //remove a seleção de todos os itens
             });
 
-            li.classList.add("selecionado");
+            li.classList.add("selecionado");//adc a class 'selecionado' ao elemento cliacdo
         });
 
-        resp.appendChild(li);
+        resp.appendChild(li); //adc o item na lista exibida do HTML
     });
 
 });
 
-// Remover tarefa com confirmação
-btn3.addEventListener("click", () => {
 
-    const selecionado = resp.querySelector(".selecionado");
+btn3.addEventListener("click", () => { // evento do botão 'Remover tarefa'
 
-    if (selecionado) {
+    const selecionado = resp.querySelector(".selecionado"); // pega o item que está selecionado
 
-        const texto = selecionado.innerText;
+    if (selecionado) { // se algum item estiver selecionado
 
-        // confirmação antes de excluir
-        const confirmar = confirm(`Confirma exclusão de "${texto}"?`);
+        const texto = selecionado.innerText; // pega o texto da tarefa
 
-        if (!confirmar) return;
+        const confirmar = confirm(`Confirma exclusão de "${texto}"?`);  // pergunta se o usuário quer realmente excluir
+        if (!confirmar) return; // se clicar em cancelar, não remove nada
 
-        // remove da tela
-        selecionado.remove();
+        selecionado.remove();  // remove o item da tela
 
-        // remove do array
-        const index = listaTrf.indexOf(texto);
-
+        const index = listaTrf.indexOf(texto); // procura o índice da tarefa no array
         if (index !== -1) {
-            listaTrf.splice(index, 1);
+            listaTrf.splice(index, 1); // remove a tarefa do array (mantém a lista sincronizada)
         }
-    } else {
-        alert("Selecione uma tarefa para remover.");
+
+    } else { // se nenhum item estiver selecionado
+        alert("Selecione uma tarefa para remover."); // mostra alerta pedindo seleção
     }
 
 });
