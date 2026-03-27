@@ -15,9 +15,6 @@ label {
     margin-bottom: 5px;
 }
 
-ul {
-    cursor: pointer;
-}
 
 input[type="text"] {
     padding: 8px;
