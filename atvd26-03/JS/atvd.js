@@ -54,7 +54,7 @@ btn3.addEventListener("click", () => { // evento do botão 'Remover tarefa'
 
         const texto = selecionado.innerText; // pega o texto da tarefa
 
-        const confirmar = confirm(`Confirma exclusão de "${texto}"?`);  // pergunta se o usuário quer realmente excluir
+        const confirmar = confirm(`Confirma exclusão de "${texto}"?`);  // confirm - pop up - pergunta se o usuário quer realmente excluir
         if (!confirmar) return; // se clicar em cancelar, não remove nada
 
         selecionado.remove();  // remove o item da tela
