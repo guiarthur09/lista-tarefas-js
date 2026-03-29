@@ -12,7 +12,7 @@ Mini-Projeto simples de lista de tarefas feito com JavaScript puro, sem framewor
 **Como usar:** 
 
 1. Abra o arquivo `index.html` no navegador
-2. Digite uma tarefa no campo de entrada e clique em **Adicionar**
+2. Digite uma tarefa no campo de entrada e clique em **Enviar**
 3. Clique em **Adicionar** para mostrar todas as tarefas
 4. Clique em **Selecionar** para seleciona a tarefa
 5. Clique em **Remover** para excluir a tarefa selecionada (uma caixa de confirmação aparecerá)
